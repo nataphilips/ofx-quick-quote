@@ -20,17 +20,24 @@ const InputField = ({
         rules={{
           required: true,
         }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            style={{backgroundColor: 'white'}}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
+        render={({field: {onChange, onBlur, value}, fieldState}) => (
+          <>
+            <TextInput
+              style={{backgroundColor: 'white'}}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+            {fieldState.error?.message && (
+              <Text>{fieldState.error?.message}</Text>
+            )}
+            {!fieldState.error && errors.firstName && (
+              <Text>{title} is required</Text>
+            )}
+          </>
         )}
         name="firstName"
       />
-      {errors.firstName && <Text>{title} is required</Text>}
     </View>
   );
 };
