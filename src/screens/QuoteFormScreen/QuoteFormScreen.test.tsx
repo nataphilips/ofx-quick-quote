@@ -13,6 +13,7 @@ describe('QuoteFormScreen component', () => {
     firstNameFieldPlaceholder: (api: RenderAPI) =>
       api.getByPlaceholderText(/First Name/i),
     fromCurrencyLabel: (api: RenderAPI) => api.getByText(/From Currency/i),
+    toCurrencyLabel: (api: RenderAPI) => api.getByText(/To Currency/i),
   };
 
   it('renders first name form field', () => {
@@ -23,5 +24,10 @@ describe('QuoteFormScreen component', () => {
   it('renders from currency picker label', () => {
     const component = render(<QuoteFormScreen />);
     expect(elements.fromCurrencyLabel(component)).toBeDefined();
+  });
+
+  it('renders to currency picker label', () => {
+    const component = render(<QuoteFormScreen />);
+    expect(elements.toCurrencyLabel(component)).toBeDefined();
   });
 });

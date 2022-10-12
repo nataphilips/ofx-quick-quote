@@ -52,7 +52,7 @@ const CurrencySelector = ({
             {fieldState.error?.message && (
               <Text style={styles.errorText}>{fieldState.error?.message}</Text>
             )}
-            {!fieldState.error && errors.firstName && (
+            {!fieldState.error && (errors as any)[name] && (
               <Text style={styles.errorText}>This field is required</Text>
             )}
           </>
@@ -64,7 +64,7 @@ const CurrencySelector = ({
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, margin: 20},
+  container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
   label: {marginBottom: 5},
   errorText: {color: 'red'},
   rowStyle: {
