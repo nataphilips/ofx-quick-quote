@@ -8,11 +8,15 @@ import * as zod from 'zod';
 
 export type IFormInputs = {
   firstName: string;
+  fromCurrency: string;
 };
 
 const QuoteFormScreen = () => {
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
+    fromCurrency: zod
+      .string()
+      .min(3, {message: 'Please enter a valid currency'}),
   });
   const {
     control,
@@ -21,6 +25,7 @@ const QuoteFormScreen = () => {
   } = useForm({
     defaultValues: {
       firstName: '',
+      fromCurrency: 'AUD',
     },
     resolver: zodResolver(formSchema),
   });
@@ -28,7 +33,12 @@ const QuoteFormScreen = () => {
   return (
     <ScrollView>
       <InputField title={'First Name'} control={control} errors={errors} />
-      <CurrencySelector />
+      <CurrencySelector
+        title={'From Currency'}
+        control={control}
+        errors={errors}
+        name={'fromCurrency'}
+      />
       <TouchableOpacity onPress={handleSubmit(onSubmit)}>
         <Text>Submit</Text>
       </TouchableOpacity>
