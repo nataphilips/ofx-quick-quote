@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import {currencies} from '../../data/currencies';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
@@ -17,8 +17,8 @@ const CurrencySelector = ({
   name: string;
 }) => {
   return (
-    <View>
-      <Text style={{color: 'black'}}>{title}</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>{title}</Text>
       <Controller
         control={control}
         rules={{
@@ -42,13 +42,18 @@ const CurrencySelector = ({
               defaultValue={currencies.find(
                 currency => currency.code === value,
               )}
+              rowStyle={styles.rowStyle}
+              buttonStyle={{...styles.rowStyle, ...styles.buttonStyle}}
+              buttonTextStyle={styles.rowTextStyle}
+              rowTextStyle={styles.rowTextStyle}
+              dropdownStyle={styles.dropdownStyle}
             />
 
             {fieldState.error?.message && (
-              <Text>{fieldState.error?.message}</Text>
+              <Text style={styles.errorText}>{fieldState.error?.message}</Text>
             )}
             {!fieldState.error && errors.firstName && (
-              <Text>{title} is required</Text>
+              <Text style={styles.errorText}>This field is required</Text>
             )}
           </>
         )}
@@ -57,5 +62,19 @@ const CurrencySelector = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, margin: 20},
+  label: {marginBottom: 5},
+  errorText: {color: 'red'},
+  rowStyle: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: 40,
+  },
+  buttonStyle: {borderWidth: 1, borderColor: 'grey', borderRadius: 5},
+  rowTextStyle: {fontSize: 16},
+  dropdownStyle: {flex: 1, marginTop: -40},
+});
 
 export default CurrencySelector;
