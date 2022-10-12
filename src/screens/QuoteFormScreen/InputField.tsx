@@ -27,6 +27,7 @@ const InputField = ({
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              placeholder={title}
             />
             {fieldState.error?.message && (
               <Text>{fieldState.error?.message}</Text>
