@@ -1,4 +1,4 @@
-import {axiosInstance} from './axios';
+import api from './api';
 
 export type QuickQuotePayload = {
   fromCurrency: string;
@@ -25,8 +25,8 @@ export type QuickQuoteResponse = {
 
 export const quickQuote = async (payload: QuickQuotePayload) => {
   const amount = payload.amount.toFixed(2);
-  return await axiosInstance<QuickQuoteResponse>({
-    method: 'GET',
-    url: `${payload.fromCurrency}/${payload.toCurrency}/${amount}`,
-  });
+
+  return await api.get<QuickQuoteResponse>(
+    `${payload.fromCurrency}/${payload.toCurrency}/${amount}`,
+  );
 };
