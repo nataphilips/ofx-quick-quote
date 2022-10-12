@@ -8,6 +8,8 @@ import * as zod from 'zod';
 import {quickQuote, quickQuoteState} from '../../services/quickQuote';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AppStackParamList} from '../../navigation/AppStackNavigator';
 
 export type IFormInputs = {
   firstName: string;
@@ -17,7 +19,8 @@ export type IFormInputs = {
 };
 
 const QuoteFormScreen = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
   const [_quote, setQuote] = useRecoilState(quickQuoteState);
 
   const formSchema = zod.object({
