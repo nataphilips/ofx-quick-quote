@@ -5,6 +5,9 @@ import InputField from './InputField';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
+import {quickQuote, quickQuoteState} from '../../services/quickQuote';
+import {useRecoilState} from 'recoil';
+import {useNavigation} from '@react-navigation/native';
 
 export type IFormInputs = {
   firstName: string;
@@ -14,6 +17,9 @@ export type IFormInputs = {
 };
 
 const QuoteFormScreen = () => {
+  const navigation = useNavigation();
+  const [_quote, setQuote] = useRecoilState(quickQuoteState);
+
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
     fromCurrency: zod
@@ -23,11 +29,7 @@ const QuoteFormScreen = () => {
     amount: zod.number().positive(),
   });
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
+  const form = useForm({
     defaultValues: {
       firstName: '',
       fromCurrency: 'AUD',
@@ -36,7 +38,34 @@ const QuoteFormScreen = () => {
     },
     resolver: zodResolver(formSchema),
   });
-  const onSubmit: SubmitHandler<IFormInputs> = data => console.log(data);
+
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = form;
+
+  const onSubmit: SubmitHandler<IFormInputs> = async data => {
+    const response = await quickQuote({
+      fromCurrency: data.fromCurrency,
+      toCurrency: data.toCurrency,
+      amount: data.amount,
+    });
+
+    setQuote({
+      customerRate: response.data.ComparisonRate,
+      from: {
+        currency: data.fromCurrency,
+        amount: data.amount,
+      },
+      to: {
+        currency: data.toCurrency,
+        amount: response.data.CustomerAmount,
+      },
+    });
+
+    navigation.navigate('QuoteResult');
+  };
 
   return (
     <ScrollView>

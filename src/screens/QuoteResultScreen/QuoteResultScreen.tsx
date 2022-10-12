@@ -1,10 +1,10 @@
-import React from 'react'
-import { ScrollView, Text } from 'react-native'
-import { useRecoilState } from 'recoil'
-import { quickQuoteState } from '../../services/quickQuote'
+import React from 'react';
+import {ScrollView, Text} from 'react-native';
+import {useRecoilState} from 'recoil';
+import {quickQuoteState} from '../../services/quickQuote';
 
 const QuoteResultScreen = () => {
-  const [quote] = useRecoilState(quickQuoteState)
+  const [quote] = useRecoilState(quickQuoteState);
 
   return (
     <ScrollView>
@@ -14,7 +14,7 @@ const QuoteResultScreen = () => {
       <Text>To {quote.to.currency}</Text>
       <Text>To {quote.to.amount}</Text>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default QuoteResultScreen
+export default QuoteResultScreen;
