@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
 
@@ -17,8 +17,8 @@ const InputField = ({
   name: string;
 }) => {
   return (
-    <View>
-      <Text> {title}</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}> {title}</Text>
       <Controller
         control={control}
         rules={{
@@ -27,7 +27,7 @@ const InputField = ({
         render={({field: {onChange, onBlur, value}, fieldState}) => (
           <>
             <TextInput
-              style={{backgroundColor: 'white'}}
+              style={styles.input}
               onBlur={onBlur}
               onChangeText={text => {
                 if (numeric) {
@@ -42,10 +42,10 @@ const InputField = ({
               keyboardType={numeric ? 'numeric' : 'default'}
             />
             {fieldState.error?.message && (
-              <Text>{fieldState.error?.message}</Text>
+              <Text style={styles.errorText}>{fieldState.error?.message}</Text>
             )}
-            {!fieldState.error && errors.firstName && (
-              <Text>{title} is required</Text>
+            {!fieldState.error && (errors as any)[name] && (
+              <Text style={styles.errorText}>{title} is required</Text>
             )}
           </>
         )}
@@ -54,5 +54,21 @@ const InputField = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
+  label: {marginBottom: 5},
+  errorText: {color: 'red'},
+  input: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 5,
+    fontSize: 16,
+    paddingLeft: 10,
+  },
+});
 
 export default InputField;
