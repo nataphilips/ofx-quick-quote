@@ -10,6 +10,7 @@ export type IFormInputs = {
   firstName: string;
   fromCurrency: string;
   toCurrency: string;
+  amount: number;
 };
 
 const QuoteFormScreen = () => {
@@ -19,6 +20,7 @@ const QuoteFormScreen = () => {
       .string()
       .min(3, {message: 'Please enter a valid currency'}),
     toCurrency: zod.string().min(3, {message: 'Please enter a valid currency'}),
+    amount: zod.number().positive(),
   });
 
   const {
@@ -30,6 +32,7 @@ const QuoteFormScreen = () => {
       firstName: '',
       fromCurrency: 'AUD',
       toCurrency: 'USD',
+      amount: 0,
     },
     resolver: zodResolver(formSchema),
   });
@@ -37,7 +40,12 @@ const QuoteFormScreen = () => {
 
   return (
     <ScrollView>
-      <InputField title={'First Name'} control={control} errors={errors} />
+      <InputField
+        title={'First Name'}
+        control={control}
+        errors={errors}
+        name={'firstName'}
+      />
       <CurrencySelector
         title={'From Currency'}
         control={control}
@@ -49,6 +57,13 @@ const QuoteFormScreen = () => {
         control={control}
         errors={errors}
         name={'toCurrency'}
+      />
+      <InputField
+        title={'Amount'}
+        control={control}
+        errors={errors}
+        numeric={true}
+        name={'amount'}
       />
       <TouchableOpacity onPress={handleSubmit(onSubmit)}>
         <Text>Submit</Text>

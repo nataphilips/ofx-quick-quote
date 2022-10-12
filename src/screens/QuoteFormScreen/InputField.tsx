@@ -7,10 +7,14 @@ const InputField = ({
   title,
   control,
   errors,
+  numeric = false,
+  name,
 }: {
   title: string;
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
+  numeric?: boolean;
+  name: string;
 }) => {
   return (
     <View>
@@ -25,9 +29,17 @@ const InputField = ({
             <TextInput
               style={{backgroundColor: 'white'}}
               onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder={title}
+              onChangeText={text => {
+                if (numeric) {
+                  const onlyNumbers = text.replace(/[^0-9]/g, '');
+                  onChange(Number(onlyNumbers));
+                } else {
+                  onChange(text);
+                }
+              }}
+              value={value ? value.toString() : ''}
+              placeholder={numeric ? '0' : title}
+              keyboardType={numeric ? 'numeric' : 'default'}
             />
             {fieldState.error?.message && (
               <Text>{fieldState.error?.message}</Text>
@@ -37,7 +49,7 @@ const InputField = ({
             )}
           </>
         )}
-        name="firstName"
+        name={name}
       />
     </View>
   );
