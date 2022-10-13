@@ -57,8 +57,18 @@ const InputField = ({
 
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
-  label: {marginBottom: 5},
-  errorText: {color: 'red'},
+  label: {
+    marginBottom: 5,
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 14,
+    marginLeft: -4,
+  },
+  errorText: {
+    color: 'red',
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 14,
+    marginTop: 5,
+  },
   input: {
     backgroundColor: 'white',
     width: '100%',
@@ -66,6 +76,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
     borderRadius: 5,
+    fontFamily: 'RobotoCondensed-Regular',
     fontSize: 16,
     paddingLeft: 10,
   },
