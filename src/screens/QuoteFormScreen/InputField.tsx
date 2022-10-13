@@ -2,14 +2,17 @@ import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
+import FormLabel from './FormLabel';
 
 const InputField = ({
+  isRequired = false,
   title,
   control,
   errors,
   numeric = false,
   name,
 }: {
+  isRequired?: boolean;
   title: string;
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
@@ -18,11 +21,11 @@ const InputField = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}> {title}</Text>
+      <FormLabel text={title} isRequired={isRequired} />
       <Controller
         control={control}
         rules={{
-          required: true,
+          required: isRequired,
         }}
         render={({field: {onChange, onBlur, value}, fieldState}) => (
           <>
@@ -57,12 +60,6 @@ const InputField = ({
 
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
-  label: {
-    marginBottom: 5,
-    fontFamily: 'RobotoCondensed-Regular',
-    fontSize: 14,
-    marginLeft: -4,
-  },
   errorText: {
     color: 'red',
     fontFamily: 'RobotoCondensed-Regular',

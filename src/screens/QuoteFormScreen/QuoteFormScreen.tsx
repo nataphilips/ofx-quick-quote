@@ -29,7 +29,7 @@ const QuoteFormScreen = () => {
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
     lastName: zod.string().min(1, {message: 'Please enter your last name'}),
-    email: zod.string().email(),
+    email: zod.union([zod.string().email(), zod.string().length(0)]),
     fromCurrency: zod
       .string()
       .min(3, {message: 'Please enter a valid currency'}),
@@ -80,12 +80,14 @@ const QuoteFormScreen = () => {
   return (
     <ScrollView>
       <InputField
+        isRequired
         title={'First Name'}
         control={control}
         errors={errors}
         name={'firstName'}
       />
       <InputField
+        isRequired
         title={'Last Name'}
         control={control}
         errors={errors}
@@ -110,6 +112,7 @@ const QuoteFormScreen = () => {
         name={'toCurrency'}
       />
       <InputField
+        isRequired
         title={'Amount'}
         control={control}
         errors={errors}

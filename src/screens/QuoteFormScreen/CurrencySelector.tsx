@@ -4,6 +4,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import {currencies} from '../../data/currencies';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
+import FormLabel from './FormLabel';
 
 const CurrencySelector = ({
   title,
@@ -18,7 +19,7 @@ const CurrencySelector = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{title}</Text>
+      <FormLabel text={title} isRequired />
       <Controller
         control={control}
         rules={{
@@ -65,11 +66,6 @@ const CurrencySelector = ({
 
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
-  label: {
-    marginBottom: 5,
-    fontFamily: 'RobotoCondensed-Regular',
-    fontSize: 14,
-  },
   errorText: {
     color: 'red',
     fontFamily: 'RobotoCondensed-Regular',
