@@ -1,3 +1,4 @@
+import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 
@@ -8,9 +9,16 @@ const FormLabel = ({
   text: string;
   isRequired?: boolean;
 }) => {
+  const theme = useTheme();
+
   return (
-    <Text style={styles.label}>
-      {text} {isRequired && <Text style={styles.asterisk}>*</Text>}
+    <Text style={[{color: theme.colors.text}, styles.label]}>
+      {text}{' '}
+      {isRequired && (
+        <Text style={[{color: theme.colors.notification}, styles.asterisk]}>
+          *
+        </Text>
+      )}
     </Text>
   );
 };
@@ -24,7 +32,6 @@ const styles = StyleSheet.create({
   },
   asterisk: {
     fontSize: 20,
-    color: 'red',
   },
 });
 

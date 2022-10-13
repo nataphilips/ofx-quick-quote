@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import QuoteFormScreen from '../screens/QuoteFormScreen/QuoteFormScreen';
 import QuoteResultScreen from '../screens/QuoteResultScreen/QuoteResultScreen';
+import * as themes from '../theme';
+import {useColorScheme} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,8 +14,12 @@ export type AppStackParamList = {
 };
 
 const AppStackNavigator = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={isDarkMode ? themes.DarkTheme : themes.LightTheme}
+    >
       <Stack.Navigator initialRouteName={'QuoteForm'}>
         <Stack.Screen
           name="QuoteForm"
