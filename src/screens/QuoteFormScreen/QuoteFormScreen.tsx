@@ -102,6 +102,7 @@ const QuoteFormScreen = () => {
         control={control}
         errors={errors}
         keyboardType={'email-address'}
+        autocapitalize={'none'}
         name={'email'}
       />
       <CurrencySelector

@@ -16,6 +16,7 @@ type InputFieldProps = {
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
   keyboardType?: KeyboardTypeOptions;
+  autocapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   name:
     | 'firstName'
     | 'lastName'
@@ -32,6 +33,7 @@ const InputField = (props: InputFieldProps) => {
     control,
     errors,
     keyboardType = 'default',
+    autocapitalize,
     name,
   } = props;
 
@@ -61,6 +63,7 @@ const InputField = (props: InputFieldProps) => {
               value={value ? value.toString() : ''}
               placeholder={isNumeric ? '0' : title}
               keyboardType={keyboardType}
+              autoCapitalize={autocapitalize}
             />
             {fieldState.error?.message && (
               <Text style={styles.errorText}>{fieldState.error?.message}</Text>
