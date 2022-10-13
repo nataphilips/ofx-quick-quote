@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native';
 import CurrencySelector from './CurrencySelector';
 import InputField from './InputField';
 import {useForm, SubmitHandler} from 'react-hook-form';
@@ -10,6 +10,7 @@ import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList} from '../../navigation/AppStackNavigator';
+import Button from '../../components/Button';
 
 export type IFormInputs = {
   firstName: string;
@@ -97,9 +98,7 @@ const QuoteFormScreen = () => {
         numeric={true}
         name={'amount'}
       />
-      <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-        <Text>Submit</Text>
-      </TouchableOpacity>
+      <Button label={'Get quote'} onPress={handleSubmit(onSubmit)} />
     </ScrollView>
   );
 };
