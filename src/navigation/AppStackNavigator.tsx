@@ -18,12 +18,12 @@ const AppStackNavigator = () => {
         <Stack.Screen
           name="QuoteForm"
           component={QuoteFormScreen}
-          options={{title: 'Quick Quote'}}
+          options={{title: 'Quick Quote', headerBackTitle: 'Back'}}
         />
         <Stack.Screen
           name="QuoteResult"
           component={QuoteResultScreen}
-          options={{title: 'Quick Quote'}}
+          options={{title: 'Quick Quote', headerBackTitle: 'Back'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
