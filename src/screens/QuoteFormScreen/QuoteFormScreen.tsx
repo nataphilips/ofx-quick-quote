@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Alert} from 'react-native';
 import CurrencySelector from './CurrencySelector';
 import InputField from './InputField';
 import {useForm, SubmitHandler} from 'react-hook-form';
@@ -56,25 +56,29 @@ const QuoteFormScreen = () => {
   } = form;
 
   const onSubmit: SubmitHandler<IFormInputs> = async data => {
-    const response = await quickQuote({
-      fromCurrency: data.fromCurrency,
-      toCurrency: data.toCurrency,
-      amount: data.amount,
-    });
-
-    setQuote({
-      customerRate: response.data.ComparisonRate,
-      from: {
-        currency: data.fromCurrency,
+    try {
+      const response = await quickQuote({
+        fromCurrency: data.fromCurrency,
+        toCurrency: data.toCurrency,
         amount: data.amount,
-      },
-      to: {
-        currency: data.toCurrency,
-        amount: response.data.CustomerAmount,
-      },
-    });
+      });
 
-    navigation.navigate('QuoteResult');
+      setQuote({
+        customerRate: response.data.ComparisonRate,
+        from: {
+          currency: data.fromCurrency,
+          amount: data.amount,
+        },
+        to: {
+          currency: data.toCurrency,
+          amount: response.data.CustomerAmount,
+        },
+      });
+
+      navigation.navigate('QuoteResult');
+    } catch (e) {
+      Alert.alert('Something went wrong, please try again later');
+    }
   };
 
   return (
