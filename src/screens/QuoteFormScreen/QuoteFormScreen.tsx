@@ -5,12 +5,13 @@ import InputField from './InputField';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-import {quickQuote, quickQuoteState} from '../../services/quickQuote';
+import {quickQuote} from '../../services/quickQuote';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList} from '../../navigation/AppStackNavigator';
 import Button from '../../components/Button';
+import {quickQuoteState} from '../../state/quickQuote';
 
 export type IFormInputs = {
   firstName: string;
@@ -29,12 +30,15 @@ const QuoteFormScreen = () => {
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
     lastName: zod.string().min(1, {message: 'Please enter your last name'}),
-    email: zod.union([zod.string().email(), zod.string().length(0)]),
+    email: zod.union([
+      zod.string().email('Please enter a valid email'),
+      zod.string().length(0),
+    ]),
     fromCurrency: zod
       .string()
       .min(3, {message: 'Please enter a valid currency'}),
     toCurrency: zod.string().min(3, {message: 'Please enter a valid currency'}),
-    amount: zod.number().positive(),
+    amount: zod.number().positive('Please enter a positive amount'),
   });
 
   const form = useForm({

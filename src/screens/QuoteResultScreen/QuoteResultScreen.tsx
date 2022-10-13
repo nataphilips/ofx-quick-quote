@@ -3,10 +3,10 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useRecoilState, useResetRecoilState} from 'recoil';
-import {quickQuoteState} from '../../services/quickQuote';
 import Button from '../../components/Button';
 import {AppStackParamList} from '../../navigation/AppStackNavigator';
 import {formatCurrency} from '../../utils/format';
+import {quickQuoteState} from '../../state/quickQuote';
 
 const QuoteResultScreen = () => {
   const navigation =
