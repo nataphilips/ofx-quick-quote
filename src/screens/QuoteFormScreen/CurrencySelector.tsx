@@ -65,15 +65,24 @@ const CurrencySelector = ({
 
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
-  label: {marginBottom: 5},
-  errorText: {color: 'red'},
+  label: {
+    marginBottom: 5,
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 14,
+  },
+  errorText: {
+    color: 'red',
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 14,
+    marginTop: 5,
+  },
   rowStyle: {
     backgroundColor: 'white',
     width: '100%',
     height: 40,
   },
   buttonStyle: {borderWidth: 1, borderColor: 'grey', borderRadius: 5},
-  rowTextStyle: {fontSize: 16},
+  rowTextStyle: {fontFamily: 'RobotoCondensed-Regular', fontSize: 16},
   dropdownStyle: {flex: 1, marginTop: -40},
 });
 
