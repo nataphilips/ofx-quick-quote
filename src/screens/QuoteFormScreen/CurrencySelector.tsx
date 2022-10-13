@@ -15,7 +15,13 @@ const CurrencySelector = ({
   title: string;
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
-  name: string;
+  name:
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'fromCurrency'
+    | 'toCurrency'
+    | 'amount';
 }) => {
   return (
     <View style={styles.container}>

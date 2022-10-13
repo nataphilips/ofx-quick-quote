@@ -17,7 +17,13 @@ const InputField = ({
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
   numeric?: boolean;
-  name: string;
+  name:
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'fromCurrency'
+    | 'toCurrency'
+    | 'amount';
 }) => {
   return (
     <View style={styles.container}>
