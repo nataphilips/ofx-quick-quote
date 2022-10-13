@@ -1,4 +1,4 @@
-export const currencies = [
+const allCurrencies = [
   {
     name: 'UAE Dirham',
     fractionSize: 2,
@@ -2429,3 +2429,7 @@ export const currencies = [
     code: 'LTC',
   },
 ];
+
+export const currencies = allCurrencies.filter(x =>
+  ['AUD', 'NZD', 'USD', 'SGD', 'GBP', 'EUR', 'JPY', 'CAN'].includes(x.code),
+);
