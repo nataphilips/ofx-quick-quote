@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {borderWidth: 1, borderColor: 'grey', borderRadius: 5},
   rowTextStyle: {fontFamily: 'RobotoCondensed-Regular', fontSize: 16},
-  dropdownStyle: {flex: 1, marginTop: -40},
+  dropdownStyle: {flex: 1},
 });
 
 export default CurrencySelector;
