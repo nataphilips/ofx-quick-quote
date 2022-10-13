@@ -1,11 +1,12 @@
 import React, {useCallback} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useRecoilState, useResetRecoilState} from 'recoil';
 import {quickQuoteState} from '../../services/quickQuote';
 import Button from '../../components/Button';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList} from '../../navigation/AppStackNavigator';
+import {formatCurrency} from '../../utils/format';
 
 const QuoteResultScreen = () => {
   const navigation =
@@ -33,7 +34,7 @@ const QuoteResultScreen = () => {
             <View style={styles.resultAmountContainer}>
               <Text style={styles.currencyText}>{quote.from.currency} </Text>
               <Text style={styles.amountText}>
-                {Number(quote.from.amount).toFixed(2)}
+                {formatCurrency(quote.from.amount)}
               </Text>
             </View>
           </View>
@@ -42,7 +43,7 @@ const QuoteResultScreen = () => {
             <View style={styles.resultAmountContainer}>
               <Text style={styles.currencyText}>{quote.to.currency} </Text>
               <Text style={styles.amountText}>
-                {Number(quote.to.amount).toFixed(2)}
+                {formatCurrency(quote.to.amount)}
               </Text>
             </View>
           </View>
