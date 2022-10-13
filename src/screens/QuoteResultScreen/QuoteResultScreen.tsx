@@ -61,7 +61,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   resultContainer: {flex: 1, marginBottom: 5},
-  resultAmountContainer: {flex: 1, flexDirection: 'row'},
+  resultAmountContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   leftAlignedSection: {flex: 1, justifyContent: 'flex-start', marginBottom: 10},
   centeredSection: {
     flex: 1,
@@ -80,13 +84,13 @@ const styles = StyleSheet.create({
     color: 'rgba(48,176,143,1)',
   },
   currencyText: {
-    fontFamily: 'RobotoCondensed-Regular',
+    fontFamily: 'RobotoMono-Regular',
     fontSize: 34,
     color: 'rgba(76,76,76,1)',
   },
   amountText: {
     fontFamily: 'RobotoCondensed-Regular',
-    fontSize: 34,
+    fontSize: 36,
     color: 'rgb(44,131,162)',
   },
 });

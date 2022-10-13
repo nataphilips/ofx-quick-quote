@@ -8,6 +8,10 @@
     {
       "path": "assets/fonts/RobotoCondensed-Regular.ttf",
       "sha1": "e0d7acf2ca3dd0ff68f533797bb94b0580397e95"
+    },
+    {
+      "path": "assets/fonts/RobotoMono-VariableFont_wght.ttf",
+      "sha1": "4c4b222617ecdda163e01a88c191ab0a50c336cf"
     }
   ]
 }
