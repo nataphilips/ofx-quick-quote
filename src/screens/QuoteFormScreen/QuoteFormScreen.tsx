@@ -101,6 +101,7 @@ const QuoteFormScreen = () => {
         title={'Email'}
         control={control}
         errors={errors}
+        keyboardType={'email-address'}
         name={'email'}
       />
       <CurrencySelector
@@ -120,7 +121,7 @@ const QuoteFormScreen = () => {
         title={'Amount'}
         control={control}
         errors={errors}
-        numeric={true}
+        keyboardType={'numeric'}
         name={'amount'}
       />
       <Button label={'Get quote'} onPress={handleSubmit(onSubmit)} />

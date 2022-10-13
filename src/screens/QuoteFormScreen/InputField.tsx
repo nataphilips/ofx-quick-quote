@@ -1,22 +1,21 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  KeyboardTypeOptions,
+} from 'react-native';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
 import FormLabel from './FormLabel';
 
-const InputField = ({
-  isRequired = false,
-  title,
-  control,
-  errors,
-  numeric = false,
-  name,
-}: {
+type InputFieldProps = {
   isRequired?: boolean;
   title: string;
   control: Control<IFormInputs, object>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
-  numeric?: boolean;
+  keyboardType?: KeyboardTypeOptions;
   name:
     | 'firstName'
     | 'lastName'
@@ -24,7 +23,20 @@ const InputField = ({
     | 'fromCurrency'
     | 'toCurrency'
     | 'amount';
-}) => {
+};
+
+const InputField = (props: InputFieldProps) => {
+  const {
+    isRequired = false,
+    title,
+    control,
+    errors,
+    keyboardType = 'default',
+    name,
+  } = props;
+
+  const isNumeric = keyboardType === 'numeric';
+
   return (
     <View style={styles.container}>
       <FormLabel text={title} isRequired={isRequired} />
@@ -39,7 +51,7 @@ const InputField = ({
               style={styles.input}
               onBlur={onBlur}
               onChangeText={text => {
-                if (numeric) {
+                if (isNumeric) {
                   const onlyNumbers = text.replace(/[^0-9]/g, '');
                   onChange(Number(onlyNumbers));
                 } else {
@@ -47,8 +59,8 @@ const InputField = ({
                 }
               }}
               value={value ? value.toString() : ''}
-              placeholder={numeric ? '0' : title}
-              keyboardType={numeric ? 'numeric' : 'default'}
+              placeholder={isNumeric ? '0' : title}
+              keyboardType={keyboardType}
             />
             {fieldState.error?.message && (
               <Text style={styles.errorText}>{fieldState.error?.message}</Text>
