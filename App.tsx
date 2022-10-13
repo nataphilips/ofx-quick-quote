@@ -1,14 +1,16 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {RecoilRoot} from 'recoil';
 import AppStackNavigator from './src/navigation/AppStackNavigator';
+import * as themes from './src/theme';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : 'white',
+    backgroundColor: isDarkMode
+      ? themes.DarkTheme.colors.background
+      : themes.LightTheme.colors.background,
   };
 
   return (

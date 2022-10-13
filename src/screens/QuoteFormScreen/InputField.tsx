@@ -9,6 +9,7 @@ import {
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
 import FormLabel from './FormLabel';
+import {useTheme} from '@react-navigation/native';
 
 type InputFieldProps = {
   isRequired?: boolean;
@@ -39,6 +40,8 @@ const InputField = (props: InputFieldProps) => {
 
   const isNumeric = keyboardType === 'numeric';
 
+  const theme = useTheme();
+
   return (
     <View style={styles.container}>
       <FormLabel text={title} isRequired={isRequired} />
@@ -50,7 +53,10 @@ const InputField = (props: InputFieldProps) => {
         render={({field: {onChange, onBlur, value}, fieldState}) => (
           <>
             <TextInput
-              style={styles.input}
+              style={[
+                {color: theme.colors.text, borderColor: theme.colors.border},
+                styles.input,
+              ]}
               onBlur={onBlur}
               onChangeText={text => {
                 if (isNumeric) {
@@ -66,10 +72,18 @@ const InputField = (props: InputFieldProps) => {
               autoCapitalize={autocapitalize}
             />
             {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error?.message}</Text>
+              <Text
+                style={[{color: theme.colors.notification}, styles.errorText]}
+              >
+                {fieldState.error?.message}
+              </Text>
             )}
             {!fieldState.error && (errors as any)[name] && (
-              <Text style={styles.errorText}>{title} is required</Text>
+              <Text
+                style={[{color: theme.colors.notification}, styles.errorText]}
+              >
+                {title} is required
+              </Text>
             )}
           </>
         )}
@@ -82,17 +96,14 @@ const InputField = (props: InputFieldProps) => {
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
   errorText: {
-    color: 'red',
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 14,
     marginTop: 5,
   },
   input: {
-    backgroundColor: 'white',
     width: '100%',
     height: 40,
     borderWidth: 1,
-    borderColor: 'grey',
     borderRadius: 5,
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 16,

@@ -3,16 +3,17 @@ import {act, fireEvent, render, RenderAPI} from '@testing-library/react-native';
 import QuoteFormScreen from './QuoteFormScreen';
 import {RecoilRoot, useRecoilValue} from 'recoil';
 import {quickQuoteState} from '../../state/quickQuote';
+import {LightTheme} from '../../theme';
 
 jest.mock('react-native-select-dropdown', () => 'SelectDropdown');
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 const mockedRecoilOnChange = jest.fn();
-const mockedNavigate = {
-  navigate: jest.fn(),
-};
+const mockedNavigate = {navigate: jest.fn()};
+const mockedTheme = LightTheme;
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => mockedNavigate,
+  useTheme: () => mockedTheme,
 }));
 
 export const RecoilObserver = (props: {node: any; onChange: Function}) => {

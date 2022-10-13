@@ -25,6 +25,7 @@ export type IFormInputs = {
 const QuoteFormScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+
   const [_quote, setQuote] = useRecoilState(quickQuoteState);
 
   const formSchema = zod.object({

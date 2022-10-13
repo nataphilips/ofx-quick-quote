@@ -1,10 +1,16 @@
+import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const Button = ({label, onPress}: {label: string; onPress: () => void}) => {
+  const theme = useTheme();
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress} style={styles.button}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={{...{backgroundColor: theme.colors.primary}, ...styles.button}}
+      >
         <Text style={styles.label}>{label.toUpperCase()}</Text>
       </TouchableOpacity>
     </View>
@@ -16,7 +22,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(2,125,178,255)',
     borderRadius: 50,
     height: 40,
     flexShrink: 1,
