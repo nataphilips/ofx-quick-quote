@@ -15,6 +15,7 @@ import Button from '../../components/Button';
 export type IFormInputs = {
   firstName: string;
   lastName: string;
+  email: string;
   fromCurrency: string;
   toCurrency: string;
   amount: number;
@@ -28,6 +29,7 @@ const QuoteFormScreen = () => {
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
     lastName: zod.string().min(1, {message: 'Please enter your last name'}),
+    email: zod.string().email(),
     fromCurrency: zod
       .string()
       .min(3, {message: 'Please enter a valid currency'}),
@@ -39,6 +41,7 @@ const QuoteFormScreen = () => {
     defaultValues: {
       firstName: '',
       lastName: '',
+      email: '',
       fromCurrency: 'AUD',
       toCurrency: 'USD',
       amount: 0,
@@ -87,6 +90,12 @@ const QuoteFormScreen = () => {
         control={control}
         errors={errors}
         name={'lastName'}
+      />
+      <InputField
+        title={'Email'}
+        control={control}
+        errors={errors}
+        name={'email'}
       />
       <CurrencySelector
         title={'From Currency'}
