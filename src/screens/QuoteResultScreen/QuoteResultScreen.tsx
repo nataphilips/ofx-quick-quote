@@ -24,20 +24,26 @@ const QuoteResultScreen = () => {
         <View style={styles.resultContainer}>
           <View style={styles.centeredSection}>
             <Text style={styles.labelText}>OFX Customer Rate</Text>
-            <Text style={styles.customerRateText}>{quote.customerRate}</Text>
+            <Text style={styles.customerRateText}>
+              {quote.customerRate.toFixed(4)}
+            </Text>
           </View>
           <View style={styles.leftAlignedSection}>
             <Text style={styles.labelText}>From </Text>
             <View style={styles.resultAmountContainer}>
-              <Text style={styles.currencyText}>{quote.from.currency}</Text>
-              <Text style={styles.amountText}> {quote.from.amount}</Text>
+              <Text style={styles.currencyText}>{quote.from.currency} </Text>
+              <Text style={styles.amountText}>
+                {Number(quote.from.amount).toFixed(2)}
+              </Text>
             </View>
           </View>
           <View style={styles.leftAlignedSection}>
             <Text style={styles.labelText}>To </Text>
             <View style={styles.resultAmountContainer}>
-              <Text style={styles.currencyText}>{quote.to.currency}</Text>
-              <Text style={styles.amountText}> {quote.to.amount}</Text>
+              <Text style={styles.currencyText}>{quote.to.currency} </Text>
+              <Text style={styles.amountText}>
+                {Number(quote.to.amount).toFixed(2)}
+              </Text>
             </View>
           </View>
         </View>
