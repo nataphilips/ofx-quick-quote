@@ -13,6 +13,6 @@ describe('Quick Quote API', () => {
       amount: 10.111111,
     });
 
-    expect(mockedApi.get).toHaveBeenCalledWith('USD/AUD/10.11');
+    expect(mockedApi.get).toHaveBeenCalledWith('USD/AUD/10.11?format=json');
   });
 });
