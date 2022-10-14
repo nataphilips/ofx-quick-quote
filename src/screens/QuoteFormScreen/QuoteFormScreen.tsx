@@ -6,7 +6,7 @@ import {useForm, SubmitHandler} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import {quickQuote} from '../../services/quickQuote';
-import {useRecoilState} from 'recoil';
+import {useSetRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppStackParamList} from '../../navigation/AppStackNavigator';
@@ -26,7 +26,7 @@ const QuoteFormScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
 
-  const [_quote, setQuote] = useRecoilState(quickQuoteState);
+  const setQuote = useSetRecoilState(quickQuoteState);
 
   const {height, width} = useWindowDimensions();
 
