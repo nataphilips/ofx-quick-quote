@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {currencies} from '../../data/currencies';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
@@ -75,8 +76,23 @@ const CurrencySelector = ({
                 ...{color: theme.colors.text},
                 ...styles.rowTextStyle,
               }}
-              rowTextStyle={[{color: theme.colors.text}, styles.rowTextStyle]}
+              rowTextStyle={{
+                ...{
+                  color: theme.colors.text,
+                },
+                ...styles.rowTextStyle,
+              }}
               dropdownStyle={styles.dropdownStyle}
+              renderDropdownIcon={isOpened => {
+                return (
+                  <FontAwesome
+                    name={isOpened ? 'chevron-up' : 'chevron-down'}
+                    color={theme.colors.primary}
+                    size={16}
+                    style={{marginRight: 5}}
+                  />
+                );
+              }}
             />
 
             {fieldState.error?.message && (
@@ -111,7 +127,11 @@ const styles = StyleSheet.create({
     height: 40,
   },
   buttonStyle: {borderWidth: 1, borderRadius: 5},
-  rowTextStyle: {fontFamily: 'RobotoCondensed-Regular', fontSize: 16},
+  rowTextStyle: {
+    fontFamily: 'RobotoCondensed-Regular',
+    fontSize: 16,
+    textAlign: 'left',
+  },
   dropdownStyle: {flex: 1},
 });
 

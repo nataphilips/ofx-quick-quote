@@ -101,7 +101,6 @@ const QuoteFormScreen = () => {
           control={control}
           errors={errors}
           name={'firstName'}
-          style={[isLandscape && {marginVertical: 10}]}
         />
         <InputField
           isRequired
@@ -109,7 +108,6 @@ const QuoteFormScreen = () => {
           control={control}
           errors={errors}
           name={'lastName'}
-          style={[isLandscape && {marginVertical: 10}]}
         />
       </View>
 
@@ -120,7 +118,6 @@ const QuoteFormScreen = () => {
         keyboardType={'email-address'}
         autocapitalize={'none'}
         name={'email'}
-        style={[isLandscape && {marginVertical: 10}]}
       />
       <View style={[isLandscape && {flexDirection: 'row'}]}>
         <CurrencySelector
@@ -128,14 +125,12 @@ const QuoteFormScreen = () => {
           control={control}
           errors={errors}
           name={'fromCurrency'}
-          style={[isLandscape && {marginVertical: 10}]}
         />
         <CurrencySelector
           title={'To Currency'}
           control={control}
           errors={errors}
           name={'toCurrency'}
-          style={[isLandscape && {marginVertical: 10}]}
         />
       </View>
       <InputField
@@ -145,7 +140,6 @@ const QuoteFormScreen = () => {
         errors={errors}
         keyboardType={'numeric'}
         name={'amount'}
-        style={[isLandscape && {marginVertical: 10}]}
       />
       <Button label={'Get quote'} onPress={handleSubmit(onSubmit)} />
     </ScrollView>
