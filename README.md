@@ -80,7 +80,7 @@ Under [./src/data/currencies.ts](./src/data/currencies.ts) I have a list of all 
 
 ### Fonts
 
-I ran a tool and figured the font on the task document is Ciutadella, but since it is paid, I decided to go with RobotCondensed as a base and RobotoMono for returned numbers.
+I ran a tool and figured the font on the task document is Ciutadella, but since it is paid, I decided to go with RobotCondensed as a base and RobotoMono for numbers.
 
 ### Screenshots
 
