@@ -84,7 +84,7 @@ I ran a tool and figured the font on the task document is Ciutadella, but since 
 
 ### Screenshots
 
-![Form screen](https://postimg.cc/18hX2NMp)
-![Errors](https://postimg.cc/HV41Wcd0)
-![Result screen](https://postimg.cc/QBnH6YzM)
-![Form landscape](https://postimg.cc/CndycJWw)
+![Form screen](https://i.postimg.cc/x1qmkvzF/Simulator-Screen-Shot-i-Phone-12-2022-10-14-at-13-55-17.png)
+![Errors](https://i.postimg.cc/X7tj8dPP/Simulator-Screen-Shot-i-Phone-12-2022-10-14-at-14-00-26.png)
+![Result screen](https://i.postimg.cc/RFvKZjQw/Simulator-Screen-Shot-i-Phone-12-2022-10-14-at-14-03-47.png)
+![Form landscape](https://i.postimg.cc/MHmWKF5f/Simulator-Screen-Shot-i-Phone-12-2022-10-14-at-14-05-10.png)
