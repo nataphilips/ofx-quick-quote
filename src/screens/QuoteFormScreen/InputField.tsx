@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
   View,
   Text,
   TextInput,
   StyleSheet,
   KeyboardTypeOptions,
+  useWindowDimensions,
 } from 'react-native';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
 import {IFormInputs} from './QuoteFormScreen';
@@ -42,8 +43,18 @@ const InputField = (props: InputFieldProps) => {
 
   const theme = useTheme();
 
+  const {height, width} = useWindowDimensions();
+
+  const isLandscape = useMemo(() => {
+    return width >= height;
+  }, [height, width]);
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        {...styles.container},
+        isLandscape ? {marginVertical: 0} : {marginVertical: 10},
+      ]}>
       <FormLabel text={title} isRequired={isRequired} />
       <Controller
         control={control}
@@ -96,7 +107,7 @@ const InputField = (props: InputFieldProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
+  container: {flex: 1, marginHorizontal: 20},
   errorText: {
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 14,

@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useMemo} from 'react';
+import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import {currencies} from '../../data/currencies';
 import {Controller, Control, FieldErrorsImpl} from 'react-hook-form';
@@ -25,9 +25,18 @@ const CurrencySelector = ({
     | 'amount';
 }) => {
   const theme = useTheme();
+  const {height, width} = useWindowDimensions();
+
+  const isLandscape = useMemo(() => {
+    return width >= height;
+  }, [height, width]);
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        {...styles.container},
+        isLandscape ? {marginVertical: 0} : {marginVertical: 10},
+      ]}>
       <FormLabel text={title} isRequired />
       <Controller
         control={control}
@@ -91,7 +100,7 @@ const CurrencySelector = ({
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, marginHorizontal: 20, marginVertical: 10},
+  container: {flex: 1, marginHorizontal: 20},
   errorText: {
     fontFamily: 'RobotoCondensed-Regular',
     fontSize: 14,

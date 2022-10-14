@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, Alert} from 'react-native';
+import React, {useMemo} from 'react';
+import {ScrollView, Alert, useWindowDimensions, View} from 'react-native';
 import CurrencySelector from './CurrencySelector';
 import InputField from './InputField';
 import {useForm, SubmitHandler} from 'react-hook-form';
@@ -27,6 +27,12 @@ const QuoteFormScreen = () => {
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
 
   const [_quote, setQuote] = useRecoilState(quickQuoteState);
+
+  const {height, width} = useWindowDimensions();
+
+  const isLandscape = useMemo(() => {
+    return width >= height;
+  }, [height, width]);
 
   const formSchema = zod.object({
     firstName: zod.string().min(1, {message: 'Please enter your first name'}),
@@ -88,20 +94,25 @@ const QuoteFormScreen = () => {
 
   return (
     <ScrollView>
-      <InputField
-        isRequired
-        title={'First Name'}
-        control={control}
-        errors={errors}
-        name={'firstName'}
-      />
-      <InputField
-        isRequired
-        title={'Last Name'}
-        control={control}
-        errors={errors}
-        name={'lastName'}
-      />
+      <View style={[isLandscape && {flexDirection: 'row'}]}>
+        <InputField
+          isRequired
+          title={'First Name'}
+          control={control}
+          errors={errors}
+          name={'firstName'}
+          style={[isLandscape && {marginVertical: 10}]}
+        />
+        <InputField
+          isRequired
+          title={'Last Name'}
+          control={control}
+          errors={errors}
+          name={'lastName'}
+          style={[isLandscape && {marginVertical: 10}]}
+        />
+      </View>
+
       <InputField
         title={'Email'}
         control={control}
@@ -109,19 +120,24 @@ const QuoteFormScreen = () => {
         keyboardType={'email-address'}
         autocapitalize={'none'}
         name={'email'}
+        style={[isLandscape && {marginVertical: 10}]}
       />
-      <CurrencySelector
-        title={'From Currency'}
-        control={control}
-        errors={errors}
-        name={'fromCurrency'}
-      />
-      <CurrencySelector
-        title={'To Currency'}
-        control={control}
-        errors={errors}
-        name={'toCurrency'}
-      />
+      <View style={[isLandscape && {flexDirection: 'row'}]}>
+        <CurrencySelector
+          title={'From Currency'}
+          control={control}
+          errors={errors}
+          name={'fromCurrency'}
+          style={[isLandscape && {marginVertical: 10}]}
+        />
+        <CurrencySelector
+          title={'To Currency'}
+          control={control}
+          errors={errors}
+          name={'toCurrency'}
+          style={[isLandscape && {marginVertical: 10}]}
+        />
+      </View>
       <InputField
         isRequired
         title={'Amount'}
@@ -129,6 +145,7 @@ const QuoteFormScreen = () => {
         errors={errors}
         keyboardType={'numeric'}
         name={'amount'}
+        style={[isLandscape && {marginVertical: 10}]}
       />
       <Button label={'Get quote'} onPress={handleSubmit(onSubmit)} />
     </ScrollView>
