@@ -16,6 +16,7 @@
 		4165774A273043C2A253D661 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC7A2D28B3F940F6BC3AB997 /* RobotoCondensed-Light.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-OFXQuickQuote-OFXQuickQuoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-OFXQuickQuote-OFXQuickQuoteTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AE3BFCFB28F8EC6F0088A877 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE3BFCFA28F8EC6F0088A877 /* Fonts */; };
 		D17A5BF87AB14573884C0EBB /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF122667324546DFB45EA959 /* RobotoCondensed-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -46,10 +47,11 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-OFXQuickQuote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OFXQuickQuote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OFXQuickQuote/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-OFXQuickQuote-OFXQuickQuoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OFXQuickQuote-OFXQuickQuoteTests.release.xcconfig"; path = "Target Support Files/Pods-OFXQuickQuote-OFXQuickQuoteTests/Pods-OFXQuickQuote-OFXQuickQuoteTests.release.xcconfig"; sourceTree = "<group>"; };
-		B8DD7A1E4C6D4B9285068EA2 /* RobotoMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-VariableFont_wght.ttf"; path = "../assets/fonts/RobotoMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		BC7A2D28B3F940F6BC3AB997 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		AE3BFCFA28F8EC6F0088A877 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		B8DD7A1E4C6D4B9285068EA2 /* RobotoMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-VariableFont_wght.ttf"; path = "../assets/fonts/RobotoMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		BC7A2D28B3F940F6BC3AB997 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FF122667324546DFB45EA959 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		FF122667324546DFB45EA959 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				AE3BFCFA28F8EC6F0088A877 /* Fonts */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -120,7 +123,6 @@
 				B8DD7A1E4C6D4B9285068EA2 /* RobotoMono-VariableFont_wght.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -263,6 +265,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				4165774A273043C2A253D661 /* RobotoCondensed-Light.ttf in Resources */,
+				AE3BFCFB28F8EC6F0088A877 /* Fonts in Resources */,
 				D17A5BF87AB14573884C0EBB /* RobotoCondensed-Regular.ttf in Resources */,
 				21C96A3EB736452C98A458AF /* RobotoMono-VariableFont_wght.ttf in Resources */,
 			);
