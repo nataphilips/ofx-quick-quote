@@ -4,9 +4,11 @@ import QuoteFormScreen from './QuoteFormScreen';
 import {RecoilRoot, useRecoilValue} from 'recoil';
 import {quickQuoteState} from '../../state/quickQuote';
 import {LightTheme} from '../../theme';
+import {Alert} from 'react-native';
 
 jest.mock('react-native-select-dropdown', () => 'SelectDropdown');
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.spyOn(Alert, 'alert');
 
 const mockedRecoilOnChange = jest.fn();
 const mockedNavigate = {navigate: jest.fn()};
@@ -159,7 +161,7 @@ describe('QuoteFormScreen component', () => {
     });
   });
 
-  xit('Quote button should call api and navigate to the results screen', async () => {
+  it('Quote button should call api and navigation without errors', async () => {
     const component = render(wrapper(<QuoteFormScreen />));
 
     await act(async () => {
@@ -169,6 +171,10 @@ describe('QuoteFormScreen component', () => {
       fireEvent.press(elements.quoteButton(component));
     });
 
-    expect(mockedNavigate.navigate).toHaveBeenCalled();
+    expect(
+      component.queryAllByText(/Please enter a positive amount/i),
+    ).toHaveLength(0);
+
+    expect(Alert.alert).not.toHaveBeenCalled();
   });
 });
