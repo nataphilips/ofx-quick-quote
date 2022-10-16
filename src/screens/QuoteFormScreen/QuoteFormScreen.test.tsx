@@ -18,9 +18,15 @@ jest.mock('@react-navigation/native', () => ({
   useTheme: () => mockedTheme,
 }));
 
-export const RecoilObserver = (props: {node: any; onChange: Function}) => {
-  const value = useRecoilValue(props.node);
-  useEffect(() => props.onChange(value), [props.onChange, value]);
+export const RecoilObserver = ({
+  node,
+  onChange,
+}: {
+  node: any;
+  onChange: Function;
+}) => {
+  const value = useRecoilValue(node);
+  useEffect(() => onChange(value), [onChange, value]);
   return null;
 };
 
